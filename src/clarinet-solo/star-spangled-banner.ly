@@ -6,7 +6,6 @@
 }
 
 melody = \relative c' {
-    \tempo "With Spirit"
     \key bf \major
     \time 3/4
   
@@ -39,9 +38,12 @@ words = \lyricmode {
         \new Staff \with {
             instrumentName = "Clarinet"
         } {
+            \tempo "With Spirit"
             \naturalizeMusic
+            
             \transpose bf c'
             \melody
+            
             \addlyrics {
                 \set fontSize = #-2
                 \words
