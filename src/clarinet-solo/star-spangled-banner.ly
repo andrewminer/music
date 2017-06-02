@@ -22,41 +22,17 @@ global = {
 melody = \relative c' {
   \global
   \dynamicUp
-  r4 r f8. ( d16 )
-  bf4 d f
-  bf2 d8. c16
-  bf4 d, e
-  f2 f8 f
-  d'4. c8 bf4
-  a2 g8 a
-  bf4 bf f
+  r2 f8. ( d16 )    | bf4 d f       | bf2 d8. c16           | bf4 d, e                  |
+  f2 f8 f           | d'4. c8 bf4   | a2 g8 a               | bf4 bf f                  |
   \set melismaBusyProperties = #'()
   d bf f'8. ( d16 )
   \unset melismaBusyProperties
-  bf4 d f
-  bf2 d8. c16
-  bf4 d, e
-  f2 f8 f
-  d'4. c8 bf4
-  a2 g8 a
-  bf4 bf f
-  d bf d'8 d
-  d4 ef f
-  f2 ef8 d
-  c4 d ef
-  ef2 ef4
-  d4. c8 bf4
-  a2 g8 a
-  bf4 d, e
-  f2 f4
-  bf4 bf bf8 ( a )
-  g4 g g
-  c4 ef8 ( d ) c ( bf )
-  bf4 ( a ) \fermata f8 f
-  bf4. ( c8 ) d ef
-  f2 bf,8 c
-  d4. ef8 c4
-  bf2.
+  bf4 d f           | bf2 d8. c16   | bf4 d, e              | f2 f8 f                   |
+  d'4. c8 bf4       | a2 g8 a       | bf4 bf f              | d bf d'8 d                |
+  d4 ef f           | f2 ef8 d      | c4 d ef               | ef2 ef4                   |
+  d4. c8 bf4        | a2 g8 a       | bf4 d, e              | f2 f4                     |
+  bf4 bf bf8 ( a )  | g4 g g        | c4 ef8 ( d ) c ( bf ) | bf4 ( a ) \fermata f8 f   |
+  bf4. ( c8 ) d ef  | f2 bf,8 c     | d4. ef8 c4            | bf2.                      |
 }
 
 words = \lyricmode {
@@ -80,7 +56,10 @@ words = \lyricmode {
       \naturalizeMusic
       \transpose c d
       \melody
-      \addlyrics { \words }
+      \addlyrics {
+          \set fontSize = #-2
+          \words
+      }
     }
   >>
   \layout {

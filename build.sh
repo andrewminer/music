@@ -1,9 +1,17 @@
 #!/bin/bash
 
+# Constants ############################################################################################################
+
+read -d  USAGE <<-END
+USAGE: $0 <clean|compile|watch|help> (--view)
+END
+
 # Helper Functions #####################################################################################################
 
 function cancel {
-    # TODO(aminer): implement
+    usage
+    echo
+    echo $@
     exit 0
 }
 
@@ -20,7 +28,7 @@ function compile-ly {
 }
 
 function usage {
-    # TODO(aminer): implement
+    echo "$USAGE"
     exit 0
 }
 
@@ -55,7 +63,7 @@ function command-watch {
 COMMAND="$1"
 shift
 
-[[ "$COMMAND" == "" ]] && COMMAND="compile"
+[[ "$COMMAND" == "" ]] && COMMAND="help"
 
 PATTERNS=()
 VIEW="NO"
