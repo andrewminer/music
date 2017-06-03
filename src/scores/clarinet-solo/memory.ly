@@ -6,17 +6,18 @@
 }
 
 melody = \relative c'' {
+    \tempo Andante
+    \key a \minor
+    \time 6/8
+    
     \repeat volta 2 {
         c4. c~              | c8 b c d c a      | c4. c~            | c8 b c d c g      |
         a4. a~              | a8 f g a g f      | e2.~              | e4. e4 g8         |
         g4. d4 e8           | f4 g8 a4 b8       | c b a g4.~        | g r8 e c          |
     }
     \alternative {
-        {
-            g'2.~           | g4 a,8 a4 c8      | c2.               |
-        } {
-            g'4. g~         | g4. a,4 c8        | c2.               |
-        }
+        { g'2.~ | g4 a,8 a4 c8 | c2. }
+        { g'4. g~ | g4. a,4 c8 | c2. }
     }
     \repeat volta 2 {
         \tempo "Faster, in two"
@@ -32,22 +33,10 @@ melody = \relative c'' {
         c b a g4.~          | g e4 c8           |
     }
     \alternative {
-        {
-            g'4. g~         | g a,4 c8          | c2.               |
-        } {
-            g'4. g~         | g a4 c8           | c2.               |
-        }
+        { g'4. g~ | g a,4 c8 | c2.}
+        { g'4. g~ | g a4 c8 | c2. }
     }
     \bar "|."
-}
-
-\layout {
-    indent = 0.5 \in
-    
-    \context {
-        \Score
-        proportionalNotationDuration = #(ly:make-moment 1/8)
-    }
 }
 
 \book {    
@@ -55,12 +44,7 @@ melody = \relative c'' {
         \new Staff \with {
             instrumentName = "Clarinet"
         } {
-            \time 6/8
-            \key a \minor
-            \tempo Andante
-            
-            \transpose bf c'
-            \melody
+            \transpose bf c' \melody
         }
     }
 }

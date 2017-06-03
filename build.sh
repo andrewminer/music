@@ -9,18 +9,16 @@ END
 # Helper Functions #####################################################################################################
 
 function cancel {
-    usage
-    echo
-    echo $@
-    exit 0
+    usage; echo; echo $@
+    exit 1
 }
 
 function compile-ly {
     BASE_NAME=$(basename -s .ly $1)
-    DIR_NAME=$(dirname $1 | sed "s@./src/@@" | sed "s@$PWD/src/@@")
-
+    DIR_NAME=$(dirname $1 | sed "s@./src/scores/@@")
+    
     mkdir -p "dist/$DIR_NAME"
-    lilypond -I "$PWD/src/includes" -o "dist/$DIR_NAME/$BASE_NAME" $1
+    lilypond -I "$PWD/src/includes" -I "$PWD/src/pieces" -o "dist/$DIR_NAME/$BASE_NAME" $1
     
     if [[ "$VIEW" == "YES" ]]; then
         open -a "/Applications/Google Chrome.app" -g "dist/$DIR_NAME/$BASE_NAME.pdf"
@@ -46,14 +44,15 @@ function command-compile {
         [[ "$PATTERN" == "" ]] && break
         PATTERNS=(${PATTERNS[@]:1})
         
-        find . -name "*.ly" | grep -v includes | grep "$PATTERN" | while read FILE; do
+        find src/scores -name "*.ly" | grep -v includes | grep "$PATTERN" | while read FILE; do
             compile-ly $FILE
         done
     done
 }
 
 function command-watch {
-    fswatch -r src -i '*.ly$' -e "includes" | while read FILE; do
+    fswatch -r src/scores -i '*.ly$' -e "includes" | while read FILE; do
+        FILE=$(echo $FILE | sed "s@$PWD@.@")
         compile-ly $FILE
     done
 }
