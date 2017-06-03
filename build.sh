@@ -3,14 +3,32 @@
 # Constants ############################################################################################################
 
 read -d  USAGE <<-END
-USAGE: $0 <clean|compile|watch|help> (--view)
+USAGE: $0 <clean|compile|help|watch> (--view)
 END
+
+FSWATCH="fswatch"
+LILYPOND_APP="/Applications/LilyPond.app"
+LILYPOND="$LILYPOND_APP/Contents/Resources/bin/lilypond"
 
 # Helper Functions #####################################################################################################
 
 function cancel {
-    usage; echo; echo $@
+    echo "$USAGE"; echo; echo $@
     exit 1
+}
+
+function check-dependencies {
+    if ! which -s "$FSWATCH"; then
+        echo "Could not find \"fswatch\"! Try installing using: brew install fswatch"
+        echo
+        exit 1
+    fi
+    
+    if [[ ! -d "$LILYPOND_APP" ]]; then
+        echo "Could not find LilyPond! Please install it from http://lilypond.org/download.html."
+        echo
+        exit 1
+    fi
 }
 
 function compile-ly {
@@ -18,7 +36,7 @@ function compile-ly {
     DIR_NAME=$(dirname $1 | sed "s@./src/scores/@@")
     
     mkdir -p "dist/$DIR_NAME"
-    lilypond -I "$PWD/src/includes" -I "$PWD/src/pieces" -o "dist/$DIR_NAME/$BASE_NAME" $1
+    $LILYPOND -I "$PWD/src/includes" -I "$PWD/src/pieces" -o "dist/$DIR_NAME/$BASE_NAME" $1
     
     if [[ "$VIEW" == "YES" ]]; then
         open -a "/Applications/Google Chrome.app" -g "dist/$DIR_NAME/$BASE_NAME.pdf"
@@ -45,13 +63,13 @@ function command-compile {
         PATTERNS=(${PATTERNS[@]:1})
         
         find src/scores -name "*.ly" | grep -v includes | grep "$PATTERN" | while read FILE; do
-            compile-ly $FILE
+            compile-ly "./$FILE"
         done
     done
 }
 
 function command-watch {
-    fswatch -r src/scores -i '*.ly$' -e "includes" | while read FILE; do
+    $FSWATCH -r src/scores -i '*.ly$' -e "includes" | while read FILE; do
         FILE=$(echo $FILE | sed "s@$PWD@.@")
         compile-ly $FILE
     done
@@ -59,26 +77,32 @@ function command-watch {
 
 # Initialization #######################################################################################################
 
+check-dependencies
+
 COMMAND="$1"
 shift
 
 [[ "$COMMAND" == "" ]] && COMMAND="help"
 
 PATTERNS=()
+HELP="NO"
 VIEW="NO"
 
 while [[ "$1" != "" ]]; do
     case "$1" in
+        -h|-?|--help) HELP="YES";;
         -v|--view) VIEW="YES";;
         *) PATTERNS+=($1);;
     esac
     shift
 done
 
+[[ "$HELP" == "YES" ]] && usage
+
 case "$COMMAND" in
-    -h|--help|help) usage;;
     clean) command-clean;;
     compile) command-compile;;
+    help|-h|-?|--help) usage;;
     watch) command-watch;;
     *) cancel "Unrecognized command: $COMMAND"
 esac
