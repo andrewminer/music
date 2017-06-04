@@ -13,7 +13,7 @@ melody = \relative c'' {
     \tempo Andante 4 = 60
     \key bf \major
     \numericTimeSignature
-	
+
 	\time 2/4 r4\pp r8 bf16 a | \time 4/4 f4 r r16 f bf a a g g f | g16 f d8 r4 r16 d g f f ef ef d | % pg 27, 1
 	ef8. d16 bf4 r r8. g'16 | d' c c bf bf g g f d' c c a a f f g32 bf | % pg 27, 2
 	g16(\p f8.) r4 r16 f bf a a g g f | g16 f d8 r4 r16 d g f f ef ef d | % pg 28, 1
@@ -40,22 +40,17 @@ words = \lyricmode {
 	I? Two, Four, Six, Oh, One!
 }
 
-
 \book {
     \score {
-        \new Staff {
-            \naturalizeMusic
-			\transpose bf c'
-			\melody
-            
+        \new Staff \with {
+            instrumentName = "Clarinet"
+        } {
+			\transpose bf c' \melody
+
 			\addlyrics {
 				\set fontSize = #-1
 				\words
 			}
         }
-    }
-
-    \paper {
-%         page-count = #2
     }
 }

@@ -37,7 +37,26 @@
            (ly:music-set-property! music 'pitch p)))
      music))
 
-naturalizeMusic =
-#(define-music-function (parser location m)
+naturalizeMusic = #(define-music-function (parser location m)
    (ly:music?)
    (naturalize m))
+
+#(define (scoop-stencil grob)
+    (ly:stencil-add
+        (ly:note-head::print grob)
+        (grob-interpret-markup grob
+            (markup #:with-dimensions '(0 . 0) '(0 . 0)
+                #:translate '(-1.5 . -0.1)
+                #:path 0.25 '((moveto 0 0)
+                    (curveto 0 -1 -1 -1.5 -2.0 -2.0)
+                )
+            )
+        )
+    )
+)
+
+scoop = \once \override NoteHead #'stencil = #scoop-stencil
+
+toCoda = \markup {
+    \fontsize #-2 \lower #1 "TO" \musicglyph #"scripts.coda"
+}
