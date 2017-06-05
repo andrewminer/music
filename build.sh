@@ -23,7 +23,7 @@ function check-dependencies {
         echo
         exit 1
     fi
-    
+
     if [[ ! -d "$LILYPOND_APP" ]]; then
         echo "Could not find LilyPond! Please install it from http://lilypond.org/download.html."
         echo
@@ -34,10 +34,10 @@ function check-dependencies {
 function compile-ly {
     BASE_NAME=$(basename -s .ly $1)
     DIR_NAME=$(dirname $1 | sed "s@./src/scores/@@")
-    
+
     mkdir -p "dist/$DIR_NAME"
     $LILYPOND -I "$PWD/src/includes" -I "$PWD/src/pieces" -o "dist/$DIR_NAME/$BASE_NAME" $1
-    
+
     if [[ "$VIEW" == "YES" ]]; then
         open -a "/Applications/Google Chrome.app" -g "dist/$DIR_NAME/$BASE_NAME.pdf"
     fi
@@ -56,12 +56,12 @@ function command-clean {
 
 function command-compile {
     [[ ${#PATTERNS[*]} == 0 ]] && PATTERNS=(".*")
-    
+
     while true; do
         PATTERN=${PATTERNS[0]}
         [[ "$PATTERN" == "" ]] && break
         PATTERNS=(${PATTERNS[@]:1})
-        
+
         find src/scores -name "*.ly" | grep -v includes | grep "$PATTERN" | while read FILE; do
             compile-ly "./$FILE"
         done
@@ -69,8 +69,9 @@ function command-compile {
 }
 
 function command-watch {
+    CURRENT_DIR=$(dirname $0)
     $FSWATCH -r src/scores -i '*.ly$' -e "includes" | while read FILE; do
-        FILE=$(echo $FILE | sed "s@$PWD@.@")
+        FILE=$(echo $FILE | sed 's@.*/src/scores/\(.*\)$@./src/scores/\1@')
         compile-ly $FILE
     done
 }
