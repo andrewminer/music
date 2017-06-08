@@ -11,9 +11,9 @@ melody = \relative c'' {
     \time 6/8
     \key d \minor
 
-    r4. a4 g8 | f4 g8 a4 b8 | c4. a8 g f | e4 d8 e4 f8 | c4. e8 c b |
-    a4 c8 f4 a8 | g4 fs8 g4 d8 | f4 e8 e4 f8 | g4. a4 g8 | f4 g8 a4 b8 | c4. a8 g f | e4 d8 e4 f8 |
-    c4. d8 c b | a4 c8 f4 a8 | g fs g b4 e8 | f2. | r4. e,4 e8 |
+    r4. a4 g8 | f4 g8 a4 bf8 | c4. a8 g f | e4 d8 e4 f8 | c4. d8 c bf |
+    a4 c8 f4 a8 | g4 fs8 g4 d8 | f4 e8 e4 f8 | g4. a4 g8 | f4 g8 a4 bf8 | c4. a8 g f | e4 d8 e4 f8 |
+    c4. d8 c bf | a4 c8 f4 a8 | g fs g bf4 e,8 | f2. | r4. e4 e8 |
     \repeat volta 2 {
         \key a \minor
         a4 gs8 a4 b8 | c4 b8 a4 c8 | b4 a8 g4 a8 | b4. r8 b8 c8 | d4 c8 b4 c8 |
@@ -24,8 +24,9 @@ melody = \relative c'' {
     }
     \alternative {
         { e4 g8 c4 e8 | d8 cs d f4 b,8 | c4. r4. | r4. e,4 e8 }
-        { e4 g8 c4 e8 | d8 cs d f4 b,8 | c4. r4. || }
+        { e4 g8 c4 e8 | d8 cs d f4 b,8 | c4. r4. | }
     }
+    \bar "|."
 }
 
 words = \lyricmode {
@@ -51,7 +52,7 @@ words = \lyricmode {
         \new Staff \with {
             instrumentName = Clarinet
         } {
-            \melody
+            \transpose bf c' \melody
 
             \addlyrics {
                 \set fontSize = #-2

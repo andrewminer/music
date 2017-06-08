@@ -29,7 +29,7 @@ melody = \relative c' {
         g'2.                | g4. f8 e4         | d2 b4             | g4. a8 b4         |
         c2 a4               | a4. fs8 a4        | b2 gs4            | e2.               |
         g'2.                | g4. f8 e4         | d2 b4             | g4. a8 b4         |
-        c4. b8 a4           | gs4. gs8 gs4      | a2 a4             | a2.               |
+        c4. b8 a4           | gs4. fs8 gs4      | a2 a4             | a2.               |
     }
 }
 

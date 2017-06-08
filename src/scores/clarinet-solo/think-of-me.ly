@@ -11,7 +11,7 @@ melody = \relative c' {
     \tempo Moderately
     \key c \major
     \time 4/4
-  
+
     r1 | r1 |
     e8 f e4 r2 | d8 d d g~ g4 d | c4. c8 c4 c' |
     g2 r4 r8 f | e f e4 r2 | d8 d d g~ g4 d |
@@ -44,7 +44,7 @@ melody = \relative c' {
     a8 bf a2 d4 | c2 a | g a | bf e, |
     \mark "Christine:" a'8 bf a4~ a8 bf a bf | a bf a4 r8 cs8 e g |
     g4 f d a | g2 f4 g | a8 bf a2 d4 | c2 a |
-    g a bf c f1 \fermata |
+    g a bf e f1 \fermata |
 }
 
 words = \lyricmode {
@@ -75,7 +75,7 @@ words = \lyricmode {
             \naturalizeMusic
             \transpose bf c'
             \melody
-            
+
             \addlyrics {
                 \set fontSize = #-2
                 \words

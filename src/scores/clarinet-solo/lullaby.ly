@@ -18,9 +18,9 @@ melody = \relative c' {
     s2 e8 \mp e |
 
     \repeat volta 2 {
-        g2 e8 e | g2 d8 g | c4( b4.) a8 | a4( g) d8 e |
+        g2 e8 e | g2 e8 g | c4( b4.) a8 | a4( g) d8 e |
         f2 d8 e8 | f2 d8 f | b8( a) g4 b | c2 c,8 c |
-        c'4. c8 a( f) | g2 d8 c | f4 g a | g2 c,8 c |
+        c'4. c8 a( f) | g2 c,8 c | f4 g a | g2 c,8 c |
         c'4. c8 a( f) | g2 e8 c | f4 e d |
     }
 

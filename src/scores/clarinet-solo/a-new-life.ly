@@ -9,7 +9,7 @@ melody = \relative c' {
     \tempo Moderately
     \time 4/4
     \key cs \minor
-  
+
     r2 r4 r8 b | fs'2 e | fs8 e4 fs16 gs fs8 e~ \tuplet 3/2 { e ds e } | ds2 cs |
     ds8 cs4 ds16 e fs8 e4 fs16 gs | gs2 fs2 | gs8 fs gs fs gs a gs8. fs16 | b,2~ b4. b8 |
     fs'2 e | fs8 e fs gs fs e4 ds16 e | ds2 cs | r8 ds16 cs ds8 e fs4~ fs16 e fs gs |
@@ -62,8 +62,8 @@ words = \lyricmode {
             instrumentName = "Clarinet"
         } {
             \numericTimeSignature
-            \transpose bf df' \melody
-            
+            \transpose bf gf' \melody
+
             \addlyrics {
                 \set fontSize = #-2
                 \words

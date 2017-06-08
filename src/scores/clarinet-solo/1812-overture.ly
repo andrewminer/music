@@ -15,9 +15,9 @@ melody = \relative c' {
     \key c \major
 
     r8 g8 c d e d c d | e4 c c2    | r8 g8 c d e d c d      | e4 c c2        |
-    r8 a d e d a b a  | d e d a d2 | r8 g, c d c g e g      | c d c g c2     |
+    r8 a d e d a g a  | d e d a d2 | r8 g, c d c g e g      | c d c g c2     |
     r8 g8 c d e d c d | e4 c c2    | r8 g8 c d e d c d      | e4 c c2        |
-    r8 a d e d a b a  | d e d a d2 | r8 g, c d c g e g      | c8 d c g c2    |
+    r8 a d e d a g a  | d e d a d2 | r8 g, c d c g e g      | c8 d c g c2    |
 }
 
 decoration = \relative c' {

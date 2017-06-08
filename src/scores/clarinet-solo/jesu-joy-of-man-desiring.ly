@@ -15,8 +15,8 @@ melody = \relative c' {
     \key c \major
 
     \tuplet 3/2 4 {
-        r8 \mf c( d) d( g f) f( a g) | g8( c b) c( g e) c( d e) | f8( g a) g( f e) d( e c) | b8( c d) g,( b d) f( e d) |
-        e8( c d) e( g f) f( a g) | g8( c b) c( g e) c( d e) | a,8( g' f) e( d c) g( c b) | c8( d g) c( g e) c( e g) |
+        r8 \mf c( d) e( g f) f( a g) | g8( c b) c( g e) c( d e) | f8( g a) g( f e) d( e c) | b8( c d) g,( b d) f( e d) |
+        e8( c d) e( g f) f( a g) | g8( c b) c( g e) c( d e) | a,8( g' f) e( d c) g( c b) | c8( e g) c( g e) c( e g) |
     }
 
     \break
