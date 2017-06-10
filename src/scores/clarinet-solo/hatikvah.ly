@@ -6,7 +6,7 @@
 \header {
     title = "Hatikvah"
     composer = "Traditional"
-    arranger = "arr. John Davies & Paul Reade"
+    arranger = "arr. Paul Reade"
 }
 
 melody = \relative c' {

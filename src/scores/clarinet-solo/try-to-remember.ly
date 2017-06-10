@@ -2,8 +2,8 @@
 
 \header {
     title = "Try to Remember"
-    composer = "Music by Harvey Schmidt"
-    poet = "Words by Tom Jones"
+    composer = "music by Harvey Schmidt"
+    poet = "lyrics by Tom Jones"
 }
 
 melody = \relative c'' {
@@ -21,7 +21,7 @@ melody = \relative c'' {
         b'4. b8 b4 | b a g | c,4. c8 c4 | c d e |
     }
     \alternative {{
-        b8 g8( g2) | r4 b8 g b g | b g b g b g | \break
+        b'8 g8( g2) | r4 b8 g b g | b g b g b g | \break
         b g b g b g |
     } {
         b8 g8( g2) | r4 b8 g b g |

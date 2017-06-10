@@ -6,7 +6,7 @@
 \header {
     title = "Serenade: Beautiful Dreamer"
     composer = "Stephen Foster"
-    arranger = "arr. John Davies & Paul Reade"
+    arranger = "arr. Paul Reade"
 }
 
 melody = \relative c'' {
