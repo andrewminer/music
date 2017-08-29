@@ -39,7 +39,7 @@ function compile-ly {
     $LILYPOND -I "$PWD/src/includes" -I "$PWD/src/pieces" -o "dist/$DIR_NAME/$BASE_NAME" $1
 
     if [[ "$VIEW" == "YES" ]]; then
-        open -a "/Applications/Preview.app" -g "dist/$DIR_NAME/$BASE_NAME.pdf"
+        open -a "/Applications/Safari.app" -g "dist/$DIR_NAME/$BASE_NAME.pdf"
     fi
 }
 
@@ -70,7 +70,7 @@ function command-compile {
 
 function command-watch {
     CURRENT_DIR=$(dirname $0)
-    $FSWATCH -r src/scores | grep '\.ly$' --line-buffered | grep -v 'includes' --line-buffered | while read FILE; do
+    $FSWATCH -r src/scores | egrep '\.ly$' --line-buffered | grep -v 'includes' --line-buffered | while read FILE; do
         FILE=$(echo $FILE | sed 's@.*/src/scores/\(.*\)$@./src/scores/\1@')
         compile-ly $FILE
     done
