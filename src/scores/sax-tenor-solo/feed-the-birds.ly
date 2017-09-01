@@ -3,8 +3,9 @@
 \book {
     \score {
         \new Staff \with {
-            instrumentName = "Clarinet"
+            instrumentName = "Tenor Sax"
         } {
+            \transpose g c'
             \melody
             \addlyrics {
                 \set fontSize = #-2
