@@ -1,9 +1,9 @@
-\include "greensleeves-base.ly"
+\include "as-time-goes-by.ly"
 
 \book {
     \score {
         \new Staff \with {
-            instrumentName = "Clarinet"
+            instrumentName = "Violin"
         } {
             \melody
         }

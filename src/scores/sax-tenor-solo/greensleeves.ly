@@ -1,4 +1,4 @@
-\include "greensleeves.ly"
+\include "greensleeves-base.ly"
 
 \book {
     \score {

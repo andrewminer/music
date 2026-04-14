@@ -6,9 +6,6 @@ read -d  USAGE <<-END
 USAGE: $0 <clean|compile|help|watch> (--view)
 END
 
-FSWATCH="fswatch"
-LILYPOND_APP="/Applications/LilyPond.app"
-LILYPOND="$LILYPOND_APP/Contents/Resources/bin/lilypond"
 
 # Helper Functions #####################################################################################################
 
@@ -18,16 +15,12 @@ function cancel {
 }
 
 function check-dependencies {
-    if ! which -s "$FSWATCH"; then
-        echo "Could not find \"fswatch\"! Try installing using: brew install fswatch"
-        echo
-        exit 1
+    if ! which -s "fswatch"; then
+        brew install fswatch
     fi
 
-    if [[ ! -d "$LILYPOND_APP" ]]; then
-        echo "Could not find LilyPond! Please install it from http://lilypond.org/download.html."
-        echo
-        exit 1
+    if ! which -s "lilypond"; then
+        brew install lilypond
     fi
 }
 
@@ -36,7 +29,7 @@ function compile-ly {
     DIR_NAME=$(dirname $1 | sed "s@./src/scores/@@")
 
     mkdir -p "dist/$DIR_NAME"
-    $LILYPOND -I "$PWD/src/includes" -I "$PWD/src/pieces" -o "dist/$DIR_NAME/$BASE_NAME" $1
+    lilypond -I "$PWD/src/includes" -I "$PWD/src/pieces" -o "dist/$DIR_NAME/$BASE_NAME" $1
 
     if [[ "$VIEW" == "YES" ]]; then
         open -a "/Applications/Safari.app" -g "dist/$DIR_NAME/$BASE_NAME.pdf"
@@ -70,7 +63,7 @@ function command-compile {
 
 function command-watch {
     CURRENT_DIR=$(dirname $0)
-    $FSWATCH -r src/scores | egrep '\.ly$' --line-buffered | grep -v 'includes' --line-buffered | while read FILE; do
+    fswatch -r src/scores | egrep '\.ly$' --line-buffered | grep -v 'includes' --line-buffered | while read FILE; do
         FILE=$(echo $FILE | sed 's@.*/src/scores/\(.*\)$@./src/scores/\1@')
         compile-ly $FILE
     done

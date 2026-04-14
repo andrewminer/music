@@ -1,4 +1,4 @@
-\include "song-of-the-volga-boatmen.ly"
+\include "song-of-the-volga-boatmen-base.ly"
 
 \book {
     \score {
