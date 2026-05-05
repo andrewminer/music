@@ -3,7 +3,7 @@
 # Constants ############################################################################################################
 
 read -d  USAGE <<-END
-USAGE: $0 <clean|compile|help|watch> (--view)
+USAGE: $0 <clean|compile|help> (--view)
 END
 
 
@@ -15,10 +15,6 @@ function cancel {
 }
 
 function check-dependencies {
-    if ! which -s "fswatch"; then
-        brew install fswatch
-    fi
-
     if ! which -s "lilypond"; then
         brew install lilypond
     fi
@@ -61,14 +57,6 @@ function command-compile {
     done
 }
 
-function command-watch {
-    CURRENT_DIR=$(dirname $0)
-    fswatch -r src/scores | egrep '\.ly$' --line-buffered | grep -v 'includes' --line-buffered | while read FILE; do
-        FILE=$(echo $FILE | sed 's@.*/src/scores/\(.*\)$@./src/scores/\1@')
-        compile-ly $FILE
-    done
-}
-
 # Initialization #######################################################################################################
 
 check-dependencies
@@ -97,6 +85,5 @@ case "$COMMAND" in
     clean) command-clean;;
     compile) command-compile;;
     help|-h|-?|--help) usage;;
-    watch) command-watch;;
     *) cancel "Unrecognized command: $COMMAND"
 esac

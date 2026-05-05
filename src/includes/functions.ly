@@ -55,7 +55,7 @@ naturalizeMusic = #(define-music-function (parser location m)
     )
 )
 
-scoop = \once \override NoteHead #'stencil = #scoop-stencil
+scoop = \once \override NoteHead.stencil = #scoop-stencil
 
 toCoda = \markup {
     \fontsize #-2 \lower #1 "TO" \musicglyph #"scripts.coda"
