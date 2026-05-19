@@ -13,7 +13,7 @@
 
     \context {
         \Score
-        proportionalNotationDuration = #(ly:make-moment 1/8)
+        proportionalNotationDuration = #(ly:make-moment 1/12)
     }
 }
 

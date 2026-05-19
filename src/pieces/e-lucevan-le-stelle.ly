@@ -6,24 +6,50 @@
     composer = "Puccini"
 }
 
-melody = \relative c'' {
+
+melody = \relative c' {
     \tempo "Andante lento appassionato molto"
     \numericTimeSignature
-    \key cs \minor
+    \key b \minor
 
-    %{  1 %} | \time 6/4 s4\p s8 gs8 ds' e fs(^\markup "rubando" gs fs e) ds8.^\markup "rit." gs,16
-    %{  2 %} \bar "||" \time 3/4 cs4. cs8( ds8 e8
-    %{  3 %} | a,4~ a8.) a16( b cs ds e)
-    %{  4 %} | fs8[ gs a b] \grace { a16 b16( } a8.) fs16(
-    %{  5 %} | gs4) gs2(
-    %{  6 %} | gs16) gs, ds' e fs( gs fs e) ds8. gs,16(
-    %{  7 %} | cs4.)\< cs8( ds e
-    %{  8 %} | a4) a2(\!\mf
-    %{  9 %} | a8) a a a fs8. ds16(
-    %{ 10 %} | gs2.)\>
-    %{ 11 %} | s8\! gs gs gs ds8. bs16(\<
-    %{ 12 %} | e4)\! e2\>
-    %{ 13 %} \bar "||" \time 4/4 s8\!\mf b8(^\markup "so st'do vagamente" fs' gs) a( b) a16( gs fs b,)
-    %{ 14 %} | \time 3/4 e8^\markup "affrett." e4. ds8.(^\markup "rit." gs,16
-    %{ 15 %} | cs2.)
+    %{  1 %} | \time 4/4 r4 r8 \p fs8--\downbow cs'8-- d-- e-- fs--
+    %{  2 %} | \time 2/4 e8-- d-- cs8.-- fs,16(\downbow
+    %{  3 %} | \time 3/4 b4.) b8--\upbow cs-- d--
+    %{  4 %} | g,4( g8.) g16( a b cs d)
+    %{ -- %}
+    %{  5 %} | e8-- fs-- g-- a--\fermata \acciaccatura { g16 a16 } g8. e16(\upbow
+    %{  6 %} | fs4) fs2\downbow
+    %{  7 %} | r8 fs,8--\downbow_\markup { \italic "rit." } cs'-- d-- e-- fs--
+    %{  8 %} | \time 2/4 e8 d \acciaccatura { cs16 d } cs8.\fermata fs,16(\downbow
+    %{ -- %}
+    %{  9 %} | \time 3/4 b4.) b8( cs d)
+    %{ 10 %} | g4\downbow g2\upbow
+    %{ 11 %} | r8 g8--\downbow\mf g--_\markup { \italic "stent." } g-- e8. cs16(
+    %{ 12 %} | fs4.) b,8(\< cs e)\!
+    %{ -- %}
+    %{ 13 %} | b8 e-- e-- e-- cs8. as16(\upbow
+    %{ 14 %} | ds4) ds2\>
+    %{ 15 %} | \time 4/4 r8\! a e' f g a g16 f e16.\fermata a,32\upbow
+    %{ 16 %} | \time 3/4 d8_\markup { \italic "affrett." } d4.\> cs8.(\downbow fs,16)\!
+    %{ -- %}
+    %{ 17 %} | b2.\upbow
+    %{ 18 %} | \time 4/4 r8 fs8(_\markup { \italic "con grande sentimento" } cs' d e fs)
+               e16( d cs16.)\fermata fs,32\downbow(
+    %{ 19 %} | \time 3/4 b8) b4 b8( cs d)
+    %{ 20 %} | g,4 g8. g16( a b cs d)
+    %{ -- %}
+    %{ 21 %} | e8( fs_\markup { \italic "rit." } g a) \acciaccatura { g16 a } g8. e16(
+    %{ 22 %} | fs4) f2
+    %{ 23 %} | r8 fs,8\downbow\mf cs'8_\markup { \italic "rit." } d e fs
+    %{ 24 %} | \time 2/4 e8 d \acciaccatura { cs16 d } cs8.\fermata fs,16(\downbow
+    %{ 25 %} | \time 3/4 b8) b4 b8\upbow cs d
+    %{ 26 %} | g4\downbow\< g2\upbow
+    %{ 27 %} | r8\! g8--\downbow g-- g-- \tuplet 3/2 { e4(\accent cs8) }
+    %{ 28 %} | fs4 f2\>
+    %{ 29 %} | r8\! e8--\downbow e-- e-- cs8. as16(\downbow
+    %{ 30 %} | d4) d2\<\upbow_\markup { \italic "affrett." }
+    %{ 31 %} | \time 4/4 r8\! a8--\f\downbow_\markup { \italic "cresc." } e'-- f-- g-- a--\fermata
+               g16\upbow f e a,
+    %{ 32 %} | \time 3/4 d8 d4. \tuplet 3/2 { cs8-- cs8.-- fs,16( }
+    %{ 33 %} | \tempo Lento b8) b4.\downbow r4 \bar "|."
 }

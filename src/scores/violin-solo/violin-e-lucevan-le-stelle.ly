@@ -6,7 +6,7 @@
         \new Staff \with {
             instrumentName = "Violin"
         } {
-            \transpose c bf, \melody
+            \transpose c c \melody
         }
     }
 }
